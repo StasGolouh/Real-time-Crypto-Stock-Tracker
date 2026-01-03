@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import {subscribeToTicker} from './services/binanceService';
 import { useCryptoStore } from "./store/useCryptoStore";
 import type { BinanceTicker } from "./types/crypto";
+import './App.css';
 
 
 function App() {
@@ -31,13 +32,23 @@ function App() {
 
   
   return (
-    <div className="p-10 bg-slate-950 min-h-screen text-white">
-      <h1 className="text-2xl font-bold mb-5">Crypto Dashboard Live</h1>
-      
-      <div className="grid gap-4">
+    <div className="dashboard-container">
+      <header className="dashboard-header">
+        <h1 className="text-3xl font-bold text-blue-500">Crypto Tracker</h1>
+      </header>
+
+      <div className="space-y-4">
         {coins.map((coin) => (
-          <div key={coin.symbol} className="p-4 bg-slate-900 border border-slate-800 rounded">
-            {coin.symbol}: <span className="text-green-400 font-mono">${coin.price}</span>
+          <div key={coin.symbol} className="coin-card">
+            <div>
+              <h2 className="coin-info-name">{coin.name}</h2>
+              <span className="coin-info-symbol">{coin.symbol}</span>
+            </div>
+            <div className="text-right">
+              <p className="coin-price">
+                ${coin.price > 0 ? coin.price.toLocaleString() : "..."}
+              </p>
+            </div>
           </div>
         ))}
       </div>

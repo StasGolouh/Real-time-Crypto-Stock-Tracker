@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@reference "tailwindcss";
+
+@layer components {
+  .dashboard-container {
+    @apply min-h-screen bg-gray-950 p-6 text-white;
+  }
+
+  .dashboard-header {
+    @apply mb-8;
+  }
+
+  .coin-card {
+    @apply flex justify-between items-center p-5 bg-gray-900 rounded-lg border border-gray-800 transition-all hover:border-blue-700;
+  }
+
+  .coin-info-name {
+    @apply text-xl font-semibold;
+  }
+
+  .coin-info-symbol {
+    @apply text-sm text-gray-500 uppercase;
+  }
+
+  .coin-price {
+    @apply text-2xl font-mono font-bold text-green-400;
+  }
+}
