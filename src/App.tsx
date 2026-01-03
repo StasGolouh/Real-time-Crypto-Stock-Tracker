@@ -34,29 +34,61 @@ function App() {
   return (
     <div className="dashboard-container">
       <header className="dashboard-header">
-        <h1 className="text-3xl font-bold text-blue-500">Crypto Tracker</h1>
+        <h1 className="dashboard-title">Crypto Tracker</h1>
       </header>
 
-      <div className="space-y-4">
+      <div className="coin-list">
         {coins.map((coin) => (
-          <div key={coin.symbol} className="coin-card">
+          <div key={coin.symbol} className="coin-card group">
+            
+            {/* Left */}
             <div>
-              <h2 className="coin-info-name">{coin.name}</h2>
+              <div className="coin-header">
+                <h2 className="coin-info-name">{coin.name}</h2>
+                <span className="coin-live-badge">Live</span>
+              </div>
               <span className="coin-info-symbol">{coin.symbol}</span>
             </div>
-            <div className="text-right">
-            <p className={`coin-price
-              ${coin.status === 'up' ? 'text-green-400' : 
-              coin.status === 'down' ? 'text-red-400' : 
-              'text-white'
-            }`}>
-              ${coin.price}
-            </p>  
+
+            {/* Center */}
+            <div className="coin-stats">
+              <p className="coin-stats-title">24h High/Low</p>
+              <p className="coin-stats-high">
+                <span>H:</span> {coin.high24.toLocaleString()}
+              </p>
+              <p className="coin-stats-low">
+                <span>L:</span> {coin.low24.toLocaleString()}
+              </p>
             </div>
+
+            {/* Right */}
+            <div className="coin-price-wrapper">
+              <p
+                className={`coin-price ${
+                  coin.status === 'up'
+                    ? 'coin-price-up'
+                    : coin.status === 'down'
+                    ? 'coin-price-down'
+                    : ''
+                }`}
+              >
+                ${coin.price.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+              </p>
+
+              <span
+                className={`coin-change ${
+                  coin.change24 >= 0 ? 'coin-change-up' : 'coin-change-down'
+                }`}
+              >
+                {coin.change24 >= 0 ? '▲' : '▼'} {Math.abs(coin.change24)}%
+              </span>
+            </div>
+
           </div>
         ))}
       </div>
-    </div>
+</div>
+
   )
 }
 

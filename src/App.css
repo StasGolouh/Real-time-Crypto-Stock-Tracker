@@ -1,8 +1,8 @@
 @import "tailwindcss";
-
 @reference "tailwindcss";
 
 @layer components {
+  /* Layout */
   .dashboard-container {
     @apply min-h-screen bg-gray-950 p-6 text-white;
   }
@@ -11,8 +11,22 @@
     @apply mb-8;
   }
 
+  .dashboard-title {
+    @apply text-3xl font-bold text-blue-500;
+  }
+
+  .coin-list {
+    @apply space-y-4;
+  }
+
+  /* Card */
   .coin-card {
     @apply flex justify-between items-center p-5 bg-gray-900 rounded-lg border border-gray-800 transition-all hover:border-blue-700;
+  }
+
+  /* Left */
+  .coin-header {
+    @apply flex items-center gap-2;
   }
 
   .coin-info-name {
@@ -23,7 +37,61 @@
     @apply text-sm text-gray-500 uppercase;
   }
 
+  .coin-live-badge {
+    @apply text-[10px] bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded uppercase font-bold;
+  }
+
+  /* Center */
+  .coin-stats {
+    @apply hidden md:block text-right px-10;
+  }
+
+  .coin-stats-title {
+    @apply text-xs text-gray-500 uppercase font-semibold;
+  }
+
+  .coin-stats-high {
+    @apply text-sm font-mono text-gray-300;
+  }
+
+  .coin-stats-high span {
+    @apply text-green-400/70;
+  }
+
+  .coin-stats-low {
+    @apply text-sm font-mono text-gray-300;
+  }
+
+  .coin-stats-low span {
+    @apply text-red-400/70;
+  }
+
+  /* Right */
+  .coin-price-wrapper {
+    @apply text-right;
+  }
+
   .coin-price {
-    @apply text-2xl font-mono font-bold;
+    @apply font-semibold text-xl md:text-2xl transition-all duration-300 text-white;
+  }
+
+  .coin-price-up {
+    @apply text-green-400 scale-105;
+  }
+
+  .coin-price-down {
+    @apply text-red-400 scale-105;
+  }
+
+  .coin-change {
+    @apply text-sm font-bold;
+  }
+
+  .coin-change-up {
+    @apply text-green-500;
+  }
+
+  .coin-change-down {
+    @apply text-red-500;
   }
 }
