@@ -4,14 +4,17 @@ import type { Coin } from '../types/crypto';
 
 interface CryptoState {
     coins: Coin[];
-    // func for creating a list 
+    // Func for creating a list 
     setCoins: (coins: Coin[]) => void;
 
     updateCoin: (symbol: string, data: Partial<Coin>) => void;
 }
 
 export const useCryptoStore = create<CryptoState>((set) =>  ({
-    coins: [],
+    coins: [
+    { symbol: 'BTCUSDT', name: 'Bitcoin', price: 0, change24: 0, high24: 0, low24: 0, id: '1' },
+    { symbol: 'ETHUSDT', name: 'Ethereum', price: 0, change24: 0, high24: 0, low24: 0, id: '2' },
+    ],
 
     setCoins: (coins) => set({coins}),
 
