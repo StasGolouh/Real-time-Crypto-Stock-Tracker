@@ -45,9 +45,13 @@ function App() {
               <span className="coin-info-symbol">{coin.symbol}</span>
             </div>
             <div className="text-right">
-              <p className="coin-price">
-                ${coin.price > 0 ? coin.price.toLocaleString() : "..."}
-              </p>
+            <p className={
+              coin.status === 'up' ? 'text-green-400' : 
+              coin.status === 'down' ? 'text-red-400' : 
+              'text-white'
+            }>
+              ${coin.price}
+            </p>  
             </div>
           </div>
         ))}

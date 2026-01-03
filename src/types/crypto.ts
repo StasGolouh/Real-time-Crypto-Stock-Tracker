@@ -4,7 +4,8 @@ export interface Coin {
     price: number;
     change24: number; // Changes for 24 hours
     high24: number;
-    low24: number
+    low24: number;
+    status?: 'up' | 'down' | 'same';
 }
 
 export interface BinanceTicker {

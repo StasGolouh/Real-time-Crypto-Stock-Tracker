@@ -18,9 +18,15 @@ export const useCryptoStore = create<CryptoState>((set) =>  ({
 
     setCoins: (coins) => set({coins}),
 
-    updateCoin: (symbol, data) => set((state) => ({
+    updateCoin: (symbol, data) => 
+        set((state) => ({
         // if symbol matches, then updating the price of coin 
-        coins: state.coins.map((coin) => coin.symbol === symbol ? {...coin, ...data}: coin
-    ),
+        coins: state.coins.map((coin) => {
+            if (coin.symbol === symbol && data.price !== undefined) {
+                const status = data.price > coin.price ? 'up' : data.price < coin.price ? 'down' : 'same';
+                return {...coin, ...data, status};
+            }
+            return coin;
+        }),
     })),
 }));
